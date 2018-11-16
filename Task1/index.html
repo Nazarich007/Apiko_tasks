@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <h1>Task 2</h1>
+    <body>
+   
+    <div>
+        Довжина паролю <input name="other12" id="input_extrafl12" class="input_extraf2" value="" type="number" /><br>
+        <input id="ispen" name="is_pending" type="checkbox">Наявність цифр
+    </div>
+    <div>
+                    
+        <input id="isopen" name="is_openinging" type="checkbox"> Наявність символів
+                   
+    </div>
+    <button class ='gen' >Generate password!</button>;
+    <hr>
+    <div class="result"></div>
+    <script>
+        const $result = document.querySelector('.result');
+        const $passwordButton = document.querySelector('.gen');
+        const $a= document.getElementById('input_extrafl12');
+        const $b= document.getElementById('ispen');
+        const $c= document.getElementById('isopen');
+         
+           
+        $passwordButton.addEventListener('click', () => {
+            
+            const count = $a.value;
+            $result.innerHTML = "Отже кількість символів - "+count+".\n";
+                if($b.checked){
+                    const b = true;
+                    $result.innerHTML += "Наявність цифр - "+b+".\n";
+                }else { 
+                    const b= false;
+                    $result.innerHTML += "Наявність цифр - "+b+".\n";
+                };
+                if($c.checked){
+                    const c= true;
+                    $result.innerHTML += "Наявність символів - "+c+".\n";
+                }else  {
+                    const c= false;
+                    $result.innerHTML += "Наявність символів - "+c+".\n";
+                };
+                  passwordGenerate(count);   
+                });
+    
+    const passwordGenerate = (count) => {
+    let char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const symb = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+    const num = '0123456789';
+    if($c.checked)
+        char += symb;
+    if($b.checked)
+        char += num;
+    let passw = "";
+    for (var i = 0, length = char.length; i < count; i++) {
+        passw += char.charAt(Math.floor(Math.random() * length));
+    }
+        $result.innerHTML = "Отже згенерований пароль - "+ passw;
+    }
+    </script>
+</body>     
+</html>
